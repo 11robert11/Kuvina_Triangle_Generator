@@ -1,19 +1,14 @@
 import colorsys
 import random
-import time
-
-import numpy as np
-import pygame
-from pygame import Rect
 import png
+
+
 ###
 # Kuvina Triangle - Kuvina Saydaki
 # Demos from How I made my own Fractal - Kuvina Saydaki
 # To play with settings scroll to the bottom of the code.
 # To see compute function options look bellow "define cell calculation functions"
 ###
-import png
-
 
 def run():
     row_holder: list[list[int]] = list()
@@ -43,14 +38,11 @@ def run():
             pixel_buffer_row.append(int(color[1]))
             pixel_buffer_row.append(int(color[2]))
 
-            # color = colorsys.hls_to_rgb((val % mod) / mod, 255, 1)
-            # colorI = (int(color[0]), int(color[1]), int(color[2]))
         pixel_buffer.append(pixel_buffer_row)
-    f = open('fractal.png', 'wb')
+    f = open(output_file, 'wb')
     w = png.Writer(width=cellWidth, height=cellHeight, greyscale=False)
     w.write(f, pixel_buffer)
     f.close()
-    post_draw = time.time_ns()
 
 
 # define cell calculation functions
@@ -136,6 +128,7 @@ background_color = (50, 50, 50)  # (0-255, 0-255, 0-255)
 saturation = 1  # 0.0-1.0
 hue_offset = 1  # 0.0, 1.0
 compute_function = compute_standard
+output_file = "fractal.png"
 #########
 
 run()
