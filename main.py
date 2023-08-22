@@ -15,8 +15,6 @@ import png
 import png
 
 
-
-
 def run():
     row_holder: list[list[int]] = list()
     for y in range(cellHeight):
@@ -38,8 +36,6 @@ def run():
         for working_col_index in range(cellWidth):
             val = row_holder[working_row_index][working_col_index]
             if val > 0:
-                if(val > mod):
-                    print("!")
                 color = colorsys.hsv_to_rgb((val - hue_offset) / (mod - hue_offset), saturation, 255)
             else:
                 color = background_color
@@ -50,7 +46,7 @@ def run():
             # color = colorsys.hls_to_rgb((val % mod) / mod, 255, 1)
             # colorI = (int(color[0]), int(color[1]), int(color[2]))
         pixel_buffer.append(pixel_buffer_row)
-    f = open('swatch.png', 'wb')
+    f = open('fractal.png', 'wb')
     w = png.Writer(width=cellWidth, height=cellHeight, greyscale=False)
     w.write(f, pixel_buffer)
     f.close()
@@ -127,21 +123,18 @@ def compute_bi_skew_r(x, y, row_holder: list[list[int]]) -> int:
     return v % mod
 
 
-
-
-
-# configurables
+# configurable
 #########
-cellWidth = 1000  # 2D array of cell's width
-cellHeight = 1000  # 2D array of cell's height
-mod = 4  # modulo
-psychedelic_offset = 1
-nucleationValue = -1  # Value of nucleation cell
+cellWidth = 400  # 2D array of cell's width
+cellHeight = 500  # 2D array of cell's height
+mod = 3  # modulo
+psychedelic_offset = 0
+nucleationValue = 1  # Value of nucleation cell
 defaultFill = 0  # Default Cell Value
 seedIndex = cellWidth // 2  # Index of nucleation cell, default is center of first row
-background_color = (50, 50, 50)
-saturation = 1
-hue_offset = 1
+background_color = (50, 50, 50)  # (0-255, 0-255, 0-255)
+saturation = 1  # 0.0-1.0
+hue_offset = 1  # 0.0, 1.0
 compute_function = compute_standard
 #########
 
