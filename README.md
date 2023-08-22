@@ -1,6 +1,6 @@
 # Kuvina Triangle Fractal Gen
 Kuvina Triangle - Kuvina Saydaki
-Demos from How I made my own Fractal - Kuvina Saydaki
+[How I made my own Fractal](https://www.youtube.com/watch?v=gQyIZWYZwns) - Kuvina Saydaki
 
 ## Running
 1. Created venv
